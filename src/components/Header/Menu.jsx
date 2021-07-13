@@ -3,7 +3,7 @@ import CategoriesContext from '../../contexts/CategoriesContext';
 
 function MenuItem({ label }) {
     return (
-        <li className="menu__item">
+        <li className="menu__item" data-testid="categoriesForTest">
             <a className="menu__link" href="#home">
                 <span>{label}</span>
             </a>

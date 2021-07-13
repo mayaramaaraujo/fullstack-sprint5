@@ -45,7 +45,7 @@ const ProductDetails = () => {
     const product = productsContext.products.filter((p, i) => i === Number(id));
 
     if (!product.length) {
-      history.push("/")
+      history.push("/404")
     }
 
     setProduct(product[0]);
