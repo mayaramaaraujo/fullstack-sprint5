@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import CategoriesContext from "../../../contexts/CategoriesContext";
 
-function BreadcrumbItem({ link, label }) {
+function BreadcrumbItem({ link, name }) {
     return (
         <li className="breadcrumbs__item">
-            { link ?
+            {link ?
                 <>
-                    <a className="breadcrumbs__link" href={link}>{label}</a>
+                    <a className="breadcrumbs__link" href={link}>{name}</a>
                     <span className="breadcrumbs__item  breadcrumbs__separator">/</span>
                 </>
                 :
-                <span className="breadcrumbs__link">{label}</span>
+                <span className="breadcrumbs__link">{name}</span>
             }
         </li>
     );
@@ -23,7 +23,7 @@ function Breadcrumbs() {
         <section className="main__breadcrumbs breadcrumbs">
             <nav>
                 <ol className="breadcrumbs__list">
-                    {categories.current && categories.current.map(c => <BreadcrumbItem key={c.id} link={c.link} label={c.label} />)}
+                    {categories.current && categories.current.map(c => <BreadcrumbItem key={c.id} link={c.link} name={c.name} />)}
                 </ol>
             </nav>
         </section>
