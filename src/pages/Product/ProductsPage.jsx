@@ -4,6 +4,7 @@ import ProductsContext from '../../contexts/ProductsContext';
 import Breadcrumbs from "./components/Breadcrumbs";
 import Filters from "./components/Filters";
 import { Link } from 'react-router-dom';
+import { Main } from './style';
 
 function Product({ index, image, name, price }) {
   return (
@@ -28,7 +29,7 @@ function ProductsPage() {
   const { products, filters } = useContext(ProductsContext);
 
   return (
-    <main className="main">
+    <Main>
       <Breadcrumbs></Breadcrumbs>
       <Filters filters={filters}></Filters>
       <section className="main__products products">
@@ -49,7 +50,7 @@ function ProductsPage() {
           </ol>
         </div>
       </section>
-    </main>
+    </Main>
   );
 }
 

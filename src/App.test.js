@@ -7,21 +7,27 @@ describe("home page", () => {
     test("o cabeçalho é carregado", () => {
       render(<App />);
 
-      expect(screen.getByAltText("menu")).toBeInTheDocument();
-      expect(screen.getByAltText("fechar menu")).toBeInTheDocument();
+      const { getByAltText } = screen;
+
+      expect(getByAltText("menu")).toBeInTheDocument();
+      expect(getByAltText("fechar menu")).toBeInTheDocument();
     })
 
     test("as logos são carregadas", () => {
       render(<App />);
 
-      expect(screen.getByAltText("Logo mobile")).toBeInTheDocument();
-      expect(screen.getByAltText("Logo")).toBeInTheDocument();
+      const { getByAltText } = screen;
+
+      expect(getByAltText("Logo mobile")).toBeInTheDocument();
+      expect(getByAltText("Logo")).toBeInTheDocument();
     })
 
     test("o campo de busca é carregado", () => {
       render(<App />);
 
-      expect(screen.getByPlaceholderText("O que você está procurando?")).toBeInTheDocument();
+      const { getByPlaceholderText } = screen;
+
+      expect(getByPlaceholderText("O que você está procurando?")).toBeInTheDocument();
     })
   })
 
@@ -29,19 +35,24 @@ describe("home page", () => {
     test("as imagens de atendimento, fatura e extrato, perguntas frequentes e trabalhe conosco são carregados", () => {
       render(<Footer />);
 
-      expect(screen.getByAltText("Atendimento")).toBeInTheDocument();
-      expect(screen.getByAltText("Fatura e Extrato")).toBeInTheDocument();
-      expect(screen.getByAltText("Trabalhe Conosco")).toBeInTheDocument();
-      expect(screen.getByAltText("Perguntas Frequentes")).toBeInTheDocument();
+      const { getByAltText } = screen;
+
+      expect(getByAltText("Atendimento")).toBeInTheDocument();
+      expect(getByAltText("Fatura e Extrato")).toBeInTheDocument();
+      expect(getByAltText("Trabalhe Conosco")).toBeInTheDocument();
+      expect(getByAltText("Perguntas Frequentes")).toBeInTheDocument();
     })
 
-    test("são carregados os textos cartão riachuelo, sobre a riachuelo, moda que transforma, ajuda", () => {
+    test("são carregados os textos cartão riachuelo, sobre a riachuelo, moda que transforma e ajuda", () => {
       render(<Footer />);
 
-      expect(screen.getByText("Cartão Riachuelo")).toBeInTheDocument();
-      expect(screen.getByText("Sobre a Riachuelo")).toBeInTheDocument();
-      expect(screen.getByText("Moda que Transforma")).toBeInTheDocument();
-      expect(screen.getByText("Ajuda")).toBeInTheDocument();
+      const { getByText } = screen;
+
+      expect(getByText("Cartão Riachuelo")).toBeInTheDocument();
+      expect(getByText("Sobre a Riachuelo")).toBeInTheDocument();
+      expect(getByText("Moda que Transforma")).toBeInTheDocument();
+      expect(getByText("Ajuda")).toBeInTheDocument();
+
     })
   })
 })
