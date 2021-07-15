@@ -4,23 +4,23 @@ import ProductsContext from '../../contexts/ProductsContext';
 import Breadcrumbs from "./components/Breadcrumbs";
 import Filters from "./components/Filters";
 import { Link } from 'react-router-dom';
-import { Main } from './style';
+import { Card, CardDescription, CardImage, CardPrice, Main, MainProducts, ProductsCard, ProductsList, ProductsRow } from './style';
 
 function Product({ index, image, name, price }) {
   return (
-    <li className="products__card card">
+    <ProductsCard>
       <Link to={`product/${index}`}>
-        <div className="card">
-          <img className="card__img" src={image} alt="" />
-          <p className="card__description">
+        <Card>
+          <CardImage src={image} alt="" />
+          <CardDescription>
             {name}
-          </p>
-          <p className="card__price">
+          </CardDescription>
+          <CardPrice>
             R$ {price}
-          </p>
-        </div>
+          </CardPrice>
+        </Card>
       </Link>
-    </li>
+    </ProductsCard>
   );
 }
 
@@ -32,9 +32,9 @@ function ProductsPage() {
     <Main>
       <Breadcrumbs></Breadcrumbs>
       <Filters filters={filters}></Filters>
-      <section className="main__products products">
-        <div className="products__row">
-          <ol className="products__list">
+      <MainProducts>
+        <ProductsRow>
+          <ProductsList>
             {products
               .filter(p =>
                 filter ? p.name.toUpperCase().indexOf(filter.toUpperCase()) !== -1 : true)
@@ -43,13 +43,13 @@ function ProductsPage() {
                   <Product key={p.sku} index={i} image={p.image} name={p.name} price={p.price} />
               )
             }
-          </ol>
-        </div>
-        <div className="products__row">
-          <ol className="products__list">
-          </ol>
-        </div>
-      </section>
+          </ProductsList>
+        </ProductsRow>
+        <ProductsRow>
+          <ProductsList>
+          </ProductsList>
+        </ProductsRow>
+      </MainProducts>
     </Main>
   );
 }
