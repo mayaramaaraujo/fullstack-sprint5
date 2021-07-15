@@ -3,7 +3,7 @@ import CategoriesContext from "../../contexts/CategoriesContext";
 
 const MenuItem = ({ label }) => (
   <li className="menu__item" data-testid="categoriesForTest">
-    <a className="menu__link" href="#home">
+    <a className="menu__link" href="/">
       <span>{label}</span>
     </a>
   </li>
