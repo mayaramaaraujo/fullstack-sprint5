@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
-import Footer from './components/Footer'
-import Breadcrumbs from './pages/Product/components/Breadcrumbs';
-import BreadcrumbsItem from './pages/Product/components/Breadcrumbs';
-import CategoriesContext from './contexts/CategoriesContext'
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import Footer from "./components/Footer";
+import Breadcrumbs from "./pages/Product/components/Breadcrumbs";
+import BreadcrumbsItem from "./pages/Product/components/Breadcrumbs";
+import CategoriesContext from "./contexts/CategoriesContext";
 
 describe("home page", () => {
   describe("quando eu abro a página inicial", () => {
@@ -14,7 +14,7 @@ describe("home page", () => {
 
       expect(getByAltText("menu")).toBeInTheDocument();
       expect(getByAltText("fechar menu")).toBeInTheDocument();
-    })
+    });
 
     test("as logos são carregadas", () => {
       render(<App />);
@@ -23,16 +23,18 @@ describe("home page", () => {
 
       expect(getByAltText("Logo mobile")).toBeInTheDocument();
       expect(getByAltText("Logo")).toBeInTheDocument();
-    })
+    });
 
     test("o campo de busca é carregado", () => {
       render(<App />);
 
       const { getByPlaceholderText } = screen;
 
-      expect(getByPlaceholderText("O que você está procurando?")).toBeInTheDocument();
-    })
-  })
+      expect(
+        getByPlaceholderText("O que você está procurando?")
+      ).toBeInTheDocument();
+    });
+  });
 
   describe("quando eu desço até o footer", () => {
     test("as imagens de atendimento, fatura e extrato, perguntas frequentes e trabalhe conosco são carregados", () => {
@@ -44,7 +46,7 @@ describe("home page", () => {
       expect(getByAltText("Fatura e Extrato")).toBeInTheDocument();
       expect(getByAltText("Trabalhe Conosco")).toBeInTheDocument();
       expect(getByAltText("Perguntas Frequentes")).toBeInTheDocument();
-    })
+    });
 
     test("são carregados os textos cartão riachuelo, sobre a riachuelo, moda que transforma e ajuda", () => {
       render(<Footer />);
@@ -55,16 +57,15 @@ describe("home page", () => {
       expect(getByText("Sobre a Riachuelo")).toBeInTheDocument();
       expect(getByText("Moda que Transforma")).toBeInTheDocument();
       expect(getByText("Ajuda")).toBeInTheDocument();
-
-    })
-  })
-})
+    });
+  });
+});
 
 describe("product page", () => {
   it("Os breadcrumbs devem ser carregados", () => {
     const { getByTestId } = screen;
 
-    const categories = {}
+    const categories = {};
 
     render(
       <CategoriesContext.Provider value={{ categories }}>
@@ -72,38 +73,38 @@ describe("product page", () => {
       </CategoriesContext.Provider>
     );
 
-    const element = getByTestId('breadcrumbs-component');
+    const element = getByTestId("breadcrumbs-component");
 
     expect(element).toBeInTheDocument();
   });
 
   it("Os itens dos breadcrumbs devem ser carregados", () => {
-    const { getByText , getAllByTestId } = screen;
+    const { getByText, getAllByTestId } = screen;
 
     const categories = {
-      "all": [],
-      "current": [
+      all: [],
+      current: [
         {
-          "id": 1,
-          "link": "#home",
-          "name": "Home"
+          id: 1,
+          link: "#home",
+          name: "Home",
         },
         {
-          "id": 2,
-          "link": "#home",
-          "name": "Infantil"
+          id: 2,
+          link: "#home",
+          name: "Infantil",
         },
         {
-          "id": 3,
-          "link": "#home",
-          "name": "Personagens"
+          id: 3,
+          link: "#home",
+          name: "Personagens",
         },
         {
-          "id": 4,
-          "name": "Mario Bros"
-        }
-      ]
-    }
+          id: 4,
+          name: "Mario Bros",
+        },
+      ],
+    };
 
     render(
       <CategoriesContext.Provider value={{ categories }}>
@@ -116,5 +117,5 @@ describe("product page", () => {
 
     expect(text).toBeInTheDocument();
     expect(element.length).toBe(4);
-  })
-})
+  });
+});
