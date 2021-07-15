@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ErrorPage from '../pages/ErrorPage/ErrorPage';
-import ProductsPage from '../pages/Product/ProductsPage'
-import ProductDetails from '../pages/ProductDetailsPage/ProductDetailsPage';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ProductsPage from "../pages/Product/ProductsPage";
+import ProductDetails from "../pages/ProductDetailsPage/ProductDetailsPage";
 
 const Routes = () => {
   return (
@@ -19,7 +19,7 @@ const Routes = () => {
         </Route>
       </Switch>
     </Router>
-  )
-}
+  );
+};
 
 export default Routes;

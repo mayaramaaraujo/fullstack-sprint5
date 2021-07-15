@@ -1,29 +1,18 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-function useLoading() {
+const useLoading = () => {
+  const [liveRequests, setLiveRequests] = useState(0);
 
-    const [liveRequests, setLiveRequests] = useState(0);
+  // Console.log(`addRequest ${liveRequests}`);
+  const addRequest = () => setLiveRequests((liveReq) => liveReq + 1);
 
-    function addRequest() {
-        setLiveRequests(liveRequests => {
-            // console.log(`addRequest ${liveRequests}`);
-            return liveRequests + 1;
-        });
-    }
+  // Console.log(`removeRequest ${liveRequests}`);
+  const removeRequest = () => setLiveRequests((liveReq) => liveReq - 1);
 
-    function removeRequest() {
-        setLiveRequests(liveRequests => {
-            // console.log(`removeRequest ${liveRequests}`);
-            return liveRequests - 1;
-        });
-    }
+  // Console.log(`isLoading ${liveRequests}`);
+  const isLoading = () => liveRequests > 0;
 
-    function isLoading() {
-        // console.log(`isLoading ${liveRequests}`);
-        return liveRequests > 0;
-    }
-
-    return [addRequest, removeRequest, isLoading];
-}
+  return [addRequest, removeRequest, isLoading];
+};
 
 export default useLoading;

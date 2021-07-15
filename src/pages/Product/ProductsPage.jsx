@@ -1,10 +1,20 @@
 import React, { useContext } from "react";
 import FilterContext from "../../contexts/FilterContext";
-import ProductsContext from '../../contexts/ProductsContext';
+import ProductsContext from "../../contexts/ProductsContext";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Filters from "./components/Filters";
-import { Link } from 'react-router-dom';
-import { Card, CardDescription, CardImage, CardPrice, Main, MainProducts, ProductsCard, ProductsList, ProductsRow } from './style';
+import { Link } from "react-router-dom";
+import {
+  Card,
+  CardDescription,
+  CardImage,
+  CardPrice,
+  Main,
+  MainProducts,
+  ProductsCard,
+  ProductsList,
+  ProductsRow,
+} from "./style";
 
 function Product({ index, image, name, price }) {
   return (
@@ -12,12 +22,8 @@ function Product({ index, image, name, price }) {
       <Link to={`product/${index}`}>
         <Card>
           <CardImage src={image} alt="" />
-          <CardDescription>
-            {name}
-          </CardDescription>
-          <CardPrice>
-            R$ {price}
-          </CardPrice>
+          <CardDescription>{name}</CardDescription>
+          <CardPrice>R$ {price}</CardPrice>
         </Card>
       </Link>
     </ProductsCard>
@@ -36,18 +42,24 @@ function ProductsPage() {
         <ProductsRow>
           <ProductsList>
             {products
-              .filter(p =>
-                filter ? p.name.toUpperCase().indexOf(filter.toUpperCase()) !== -1 : true)
-              .map(
-                (p, i) =>
-                  <Product key={p.sku} index={i} image={p.image} name={p.name} price={p.price} />
+              .filter((p) =>
+                filter
+                  ? p.name.toUpperCase().indexOf(filter.toUpperCase()) !== -1
+                  : true
               )
-            }
+              .map((p, i) => (
+                <Product
+                  key={p.sku}
+                  index={i}
+                  image={p.image}
+                  name={p.name}
+                  price={p.price}
+                />
+              ))}
           </ProductsList>
         </ProductsRow>
         <ProductsRow>
-          <ProductsList>
-          </ProductsList>
+          <ProductsList></ProductsList>
         </ProductsRow>
       </MainProducts>
     </Main>

@@ -1,6 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 import Footer from './components/Footer'
+import Breadcrumbs from './pages/Product/components/Breadcrumbs';
+import BreadcrumbsItem from './pages/Product/components/Breadcrumbs';
+import CategoriesContext from './contexts/CategoriesContext'
 
 describe("home page", () => {
   describe("quando eu abro a página inicial", () => {
@@ -54,5 +57,64 @@ describe("home page", () => {
       expect(getByText("Ajuda")).toBeInTheDocument();
 
     })
+  })
+})
+
+describe("product page", () => {
+  it("Os breadcrumbs devem ser carregados", () => {
+    const { getByTestId } = screen;
+
+    const categories = {}
+
+    render(
+      <CategoriesContext.Provider value={{ categories }}>
+        <Breadcrumbs />
+      </CategoriesContext.Provider>
+    );
+
+    const element = getByTestId('breadcrumbs-component');
+
+    expect(element).toBeInTheDocument();
+  });
+
+  it("Os itens dos breadcrumbs devem ser carregados", () => {
+    const { getByText , getAllByTestId } = screen;
+
+    const categories = {
+      "all": [],
+      "current": [
+        {
+          "id": 1,
+          "link": "#home",
+          "name": "Home"
+        },
+        {
+          "id": 2,
+          "link": "#home",
+          "name": "Infantil"
+        },
+        {
+          "id": 3,
+          "link": "#home",
+          "name": "Personagens"
+        },
+        {
+          "id": 4,
+          "name": "Mario Bros"
+        }
+      ]
+    }
+
+    render(
+      <CategoriesContext.Provider value={{ categories }}>
+        <BreadcrumbsItem />
+      </CategoriesContext.Provider>
+    );
+
+    const text = getByText("Home");
+    const element = getAllByTestId("breadcrumbs-item");
+
+    expect(text).toBeInTheDocument();
+    expect(element.length).toBe(4);
   })
 })

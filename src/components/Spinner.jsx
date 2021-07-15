@@ -1,13 +1,11 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import LoadingContext from "../contexts/LoadingContext";
-import './Spinner.css';
+import "./Spinner.css";
 
-function Spinner() {
-    const { isLoading } = useContext(LoadingContext);
+const Spinner = () => {
+  const { isLoading } = useContext(LoadingContext);
 
-    return (
-        isLoading() && <div className="loading"></div>
-    );
-}
+  return isLoading() && <div className="loading"></div>;
+};
 
 export default Spinner;
